@@ -1,6 +1,9 @@
 require 'api_constraints'
 
 OpenhouseApi::Application.routes.draw do
+  resources :user_devices
+  resources :beacons
+  resources :properties
   mount SabisuRails::Engine => "/sabisu_rails"
   devise_for :users
   # Api definition

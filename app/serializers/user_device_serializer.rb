@@ -1,3 +1,10 @@
 class UserDeviceSerializer < ActiveModel::Serializer
-  attributes :id
+  embed :ids
+  attributes :id, :uuid
+
+  has_one :user
+
+  def id
+  	object.uuid
+  end
 end

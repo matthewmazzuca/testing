@@ -1,3 +1,4 @@
+
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
@@ -37,5 +38,13 @@ module OpenhouseApi
   end
 
   config.autoload_paths += %W(#{config.root}/lib)
+
+  config.middleware.use Rack::Cors do
+      allow do
+        origins "*"
+        resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
+      end
+    end
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

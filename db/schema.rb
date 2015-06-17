@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150612025412) do
 
   create_table "beacons", force: :cascade do |t|
     t.string   "name"
+    t.integer  "property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "uuid",        array: true
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 20150612025412) do
     t.decimal  "lng",         precision: 9, scale: 6
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|

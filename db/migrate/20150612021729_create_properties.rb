@@ -9,6 +9,7 @@ class CreateProperties < ActiveRecord::Migration
       t.decimal :lat, precision: 9, scale: 6
       t.decimal :lng, precision: 9, scale: 6
       t.timestamps
+      t.belongs_to :user
     end
 
     reversible do |dir|

@@ -1,4 +1,4 @@
-class Api::V1::SessionsController < ApplicationController
+class Api::V1::SessionsController < Devise::SessionsController
   skip_before_filter :authenticate_user_from_token!, :authenticate_user!
   respond_to :html, :json
 

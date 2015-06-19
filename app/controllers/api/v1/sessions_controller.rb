@@ -1,6 +1,6 @@
 class Api::V1::SessionsController < Devise::SessionsController
   skip_before_filter :authenticate_user_from_token!, :authenticate_user!
-  respond_to :html, :json
+  respond_to :json
 
   def create
     super do |user|
@@ -16,7 +16,7 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def destroy
     user = User.find_by(auth_token: params[:id])
-    user.generate_authentication_token!
+    user.generate_authentication_token
     user.save
     head 204
   end

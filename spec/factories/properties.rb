@@ -9,3 +9,5 @@ FactoryGirl.define do
   end
 
 end
+
+FactoryGirl.create :property

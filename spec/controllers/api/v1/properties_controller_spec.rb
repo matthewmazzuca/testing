@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe Api::V1::PropertiesController do
-
+  # before do
+  #   @user = FactoryGirl.create :user
+  #   @user1 = FactoryGirl.create :user
+  # end
+  
   describe "GET #index" do
     before(:each) do
       current_user = FactoryGirl.create :user

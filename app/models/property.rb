@@ -17,27 +17,27 @@ require './lib/geocoder'
 class Property < ActiveRecord::Base
   belongs_to :user
 
-  validated :user_id, presence: true
+  validates :user_id, presence: true
   has_many :beacons
 
-  scope :close_to, -> (lat, lng, distance_in_meters = 2000) {
-    where(%{
-      ST_DWithin(
-        ST_GeographyFromText(
-          'SRID=4326;POINT(' || proprties.lng || ' ' || properties.lat || ')'
-        ),
-        ST_GeographyFromText('SRID=4326;POINT(%f %f)'),
-        %d
-      )
-    } % [lng, lat, distance_in_meters])
-  }
+  # scope :close_to, -> (lat, lng, distance_in_meters = 2000) {
+  #   where(%{
+  #     ST_DWithin(
+  #       ST_GeographyFromText(
+  #         'SRID=4326;POINT(' || proprties.lng || ' ' || properties.lat || ')'
+  #       ),
+  #       ST_GeographyFromText('SRID=4326;POINT(%f %f)'),
+  #       %d
+  #     )
+  #   } % [lng, lat, distance_in_meters])
+  # }
 
-  def address=(addr)
-    write_attribute(:address, addr)
-    return if !addr
+  # def address=(addr)
+  #   write_attribute(:address, addr)
+  #   return if !addr
     
-    g = Geocoder.new(address: addr).geocode
-    self.lat = g.lat
-    self.lng = g.lng
-  end
+  #   g = Geocoder.new(address: addr).geocode
+  #   self.lat = g.lat
+  #   self.lng = g.lng
+  # end
 end

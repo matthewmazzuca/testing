@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150612025412) do
   end
 
   add_index "beacons", ["location_id"], name: "index_beacons_on_location_id", using: :btree
+  add_index "beacons", ["property_id"], name: "index_beacons_on_property_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
     t.string   "name"
@@ -34,10 +35,12 @@ ActiveRecord::Schema.define(version: 20150612025412) do
     t.text     "description"
     t.decimal  "lat",         precision: 9, scale: 6
     t.decimal  "lng",         precision: 9, scale: 6
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
+
+  add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
 
   create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|
     t.string  "auth_name", limit: 256
@@ -53,6 +56,8 @@ ActiveRecord::Schema.define(version: 20150612025412) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_devices", ["user_id"], name: "index_user_devices_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

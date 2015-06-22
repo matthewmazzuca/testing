@@ -1,6 +1,8 @@
 require 'api_constraints'
 
 OpenhouseApi::Application.routes.draw do
+  resources :options
+  resources :highlights
   # nobody puts baby in a namespace
   devise_for :users,
     path: '/api/v1/users',

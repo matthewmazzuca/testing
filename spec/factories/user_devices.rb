@@ -5,4 +5,4 @@ FactoryGirl.define do
 
 end
 
-FactoryGirl.create :user_device
+# FactoryGirl.create :user_device

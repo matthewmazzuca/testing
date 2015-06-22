@@ -7,5 +7,4 @@ FactoryGirl.define do
     password_confirmation "12345678"
   end
 end
-
-FactoryGirl.create :user
+# FactoryGirl.create :user

@@ -1,13 +1,13 @@
 FactoryGirl.define do
   factory :property do
-    name { FFaker::Property.property_name }
-    address "94 Wycliffe Ave"
+    name "Test Property"
+    address { FFaker::Address.street_address }
     description "Lorem Ipsum Test 123"
-    lat 5
-    lng 6
+    lat 43.7
+    lng 79.4
     user
   end
 
 end
 
-FactoryGirl.create :property
+# FactoryGirl.create :property

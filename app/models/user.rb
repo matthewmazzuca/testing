@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
   before_create :generate_authentication_token
   before_save :ensure_authentication_token
 
-  has_many :products, dependent: :destroy
-  has_many :orders, dependent: :destroy
+  has_many :properties, dependent: :destroy
 
   def ensure_authentication_token
     if authentication_token.blank?

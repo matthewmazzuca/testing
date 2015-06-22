@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612025412) do
+ActiveRecord::Schema.define(version: 20150622171208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,27 @@ ActiveRecord::Schema.define(version: 20150612025412) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "uuid",        array: true
-    t.integer  "location_id"
   end
 
-  add_index "beacons", ["location_id"], name: "index_beacons_on_location_id", using: :btree
+  add_index "beacons", ["property_id"], name: "index_beacons_on_property_id", using: :btree
+
+  create_table "highlights", force: :cascade do |t|
+    t.string   "name"
+    t.string   "sub_heading"
+    t.binary   "image"
+    t.integer  "property_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "highlights", ["property_id"], name: "index_highlights_on_property_id", using: :btree
+
+  create_table "options", force: :cascade do |t|
+    t.string   "name"
+    t.binary   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string   "name"
@@ -34,10 +51,12 @@ ActiveRecord::Schema.define(version: 20150612025412) do
     t.text     "description"
     t.decimal  "lat",         precision: 9, scale: 6
     t.decimal  "lng",         precision: 9, scale: 6
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
+
+  add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
 
   create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|
     t.string  "auth_name", limit: 256
@@ -53,6 +72,8 @@ ActiveRecord::Schema.define(version: 20150612025412) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_devices", ["user_id"], name: "index_user_devices_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -8,10 +8,11 @@ class CreateProperties < ActiveRecord::Migration
       t.text :description
       t.decimal :lat, precision: 9, scale: 6
       t.decimal :lng, precision: 9, scale: 6
+      t.integer :user_id
       t.timestamps
-      t.belongs_to :user
     end
 
+    add_index :properties, :user_id
     reversible do |dir|
       dir.up do
         execute %{

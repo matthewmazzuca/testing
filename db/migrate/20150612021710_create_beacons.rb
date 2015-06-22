@@ -7,6 +7,5 @@ class CreateBeacons < ActiveRecord::Migration
     end
 
     add_column :beacons, :uuid, :integer, array: true
-    add_reference :beacons, :location, index: true
   end
 end

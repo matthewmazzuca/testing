@@ -18,9 +18,11 @@ OpenhouseApi::Application.routes.draw do
       end
 
       resources :properties, :only => [:create, :update, :destroy]
-        resources :beacons, :only => [:index, :show, :create]
+        resources :beacons, :only => [:index, :show, :create, :update, :destroy]
+        resources :highlights, :only => [:index, :show, :create, :update, :destroy]
+          resources :options, :only => [:index, :show, :create, :destroy]
       
-      resources :products, :only => [:show, :index]
+      # resources :products, :only => [:show, :index]
     end
   end
 end

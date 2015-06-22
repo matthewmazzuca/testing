@@ -8,11 +8,12 @@ class Api::V1::BeaconsController < ApplicationController
   end
 
   def show
-    respond_with Product.find(params[:id])   
+    # respond_with Product.find(params[:id])   
   end
 
   def create
-    beacon = current_user.beacons.build(product_params) 
+    # beacon = current_user.beacons.build(product_params) 
+    beacon = Beacon.new(beacon_params)
     if beacon.save
       render json: beacon, status: 201, location: [:api, beacon] 
     else
@@ -21,7 +22,7 @@ class Api::V1::BeaconsController < ApplicationController
   end
 
   def update
-    beacon = current_user.beacons.find(params[:id])
+    beacon = current_user.properties.beacons.find(params[:id])
     if beacon.update(beacon_params)
       render json: beacon, status: 200, location: [:api, beacon] 
     else
@@ -35,10 +36,10 @@ class Api::V1::BeaconsController < ApplicationController
     head 204
   end
 
-  private
+  # private
 
-    def product_params
-      params.require(:beacon).permit(:name, :location_id, :created_at, :updated_at, :uuid) 
-    end
+  #   def product_params
+  #     params.require(:beacon).permit(:name, :location_id, :created_at, :updated_at, :uuid) 
+  #   end
 
 end

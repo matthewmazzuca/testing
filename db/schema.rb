@@ -23,10 +23,8 @@ ActiveRecord::Schema.define(version: 20150622171208) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "uuid",        array: true
-    t.integer  "location_id"
   end
 
-  add_index "beacons", ["location_id"], name: "index_beacons_on_location_id", using: :btree
   add_index "beacons", ["property_id"], name: "index_beacons_on_property_id", using: :btree
 
   create_table "highlights", force: :cascade do |t|

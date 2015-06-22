@@ -15,6 +15,9 @@ require './lib/geocoder'
 #
 
 class Property < ActiveRecord::Base
+  belongs_to :user
+
+  validated :user_id, presence: true
   has_many :beacons
 
   scope :close_to, -> (lat, lng, distance_in_meters = 2000) {

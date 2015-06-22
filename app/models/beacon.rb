@@ -11,7 +11,7 @@
 #
 
 class Beacon < ActiveRecord::Base
-  belongs_to :venue
+  belongs_to :property
 
   def uuid
     read_attribute(:uuid).join('.')

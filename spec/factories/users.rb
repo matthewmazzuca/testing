@@ -8,4 +8,4 @@ FactoryGirl.define do
   end
 end
 
-FactoryGirl.create :user
+# FactoryGirl.create :user

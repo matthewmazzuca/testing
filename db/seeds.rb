@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+Property.create(name: "Ansel's house", address: "94 Wycliffe Ave", 
+	description: "the perpetual garden of eden", user_id: 1)

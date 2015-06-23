@@ -16,8 +16,7 @@ require './lib/geocoder'
 
 class Property < ActiveRecord::Base
   belongs_to :user
-
-  validates :user_id, presence: :true
+  validates :user_id, presence: true
   has_many :beacons
   has_many :highlights
 

@@ -3,7 +3,8 @@ class PropertySerializer < ActiveModel::Serializer
 
   attributes :id, :name, :address, :description, :lat, :lng, :created_at, :updated_at
   has_one :user
-  has_many :beacons, :highlights
+  has_many :beacons
+  has_many :highlights
 
   def cache_key
     [object, scope]

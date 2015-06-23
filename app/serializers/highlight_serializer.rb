@@ -1,5 +1,5 @@
 class HighlightSerializer < ActiveModel::Serializer
-  cached
+  # cached
 
   attributes :id, :name, :sub_heading, :image, :created_at, :updated_at
   has_one :property

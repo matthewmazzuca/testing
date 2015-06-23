@@ -1,5 +1,5 @@
 class PropertySerializer < ActiveModel::Serializer
-  cached
+  # cached
 
   attributes :id, :name, :address, :description, :lat, :lng, :created_at, :updated_at
   has_one :user

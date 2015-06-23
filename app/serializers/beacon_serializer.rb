@@ -1,5 +1,5 @@
 class BeaconSerializer < ActiveModel::Serializer
-  cached
+  # cached
 
   attributes :id, :name, :property_id, :uuid, :created_at, :updated_at
   has_one :property

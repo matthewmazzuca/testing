@@ -1,5 +1,5 @@
 class OptionSerializer < ActiveModel::Serializer
-  cached
+  # cached
 
   attributes :id, :name, :image, :created_at, :updated_at
   has_one :highlight

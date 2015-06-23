@@ -1,17 +1,17 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate_user_from_token!
+  # before_filter :authenticate_user_from_token!
   # before_action :authenticate_user!
   # # before_action :authenticate_admin!
   # # before_action :configure_permitted_parameters, if: :devise_controller?
 
   # # Enter the normal Devise authentication path,
   # # using the token authenticated user if available
-  before_filter :authenticate_user!
+  # before_filter :authenticate_user!
 
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
 
   
 

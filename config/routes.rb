@@ -15,10 +15,10 @@ OpenhouseApi::Application.routes.draw do
       # resources :properties, :only => [:create, :update, :destroy]
       #   resources :beacons, :only => [:index, :show, :create]
 
-      resources :properties, :only => [:index, :create, :update, :destroy] do
-        resources :beacons, :only => [:index, :show, :create, :update, :destroy]
-        resources :highlights, :only => [:index, :show, :create, :update, :destroy] do
-          resources :options, :only => [:index, :show, :create, :destroy]
+      resources :properties do
+        resources :beacons
+        resources :highlights do
+          resources :options
         end
       end
       # resources :products, :only => [:show, :index]

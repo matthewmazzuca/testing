@@ -36,6 +36,10 @@ module OpenhouseApi
     g.javascripts = false
     g.helper = false
   end
+  config.action_dispatch.default_headers = {
+    'Access-Control-Allow-Origin' => '*',
+    'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
+  }
 
   config.autoload_paths += %W(#{config.root}/lib)
 

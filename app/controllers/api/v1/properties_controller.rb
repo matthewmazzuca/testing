@@ -3,8 +3,8 @@ class Api::V1::PropertiesController < ApplicationController
   respond_to :json
 
   def index
-    properties = Property.search(params).page(params[:page]).per(params[:per_page])
-    render json: properties, meta: pagination(properties, params[:per_page])
+    properties = Property.all
+    render json: properties
   end
 
   def show

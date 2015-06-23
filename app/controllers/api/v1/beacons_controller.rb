@@ -3,12 +3,12 @@ class Api::V1::BeaconsController < ApplicationController
   respond_to :json
 
   def index
-    beacons = Beacon.search(params).page(params[:page]).per(params[:per_page])
-    render json: beacons, meta: pagination(beacons, params[:per_page])
+    beacons = Beacon.all
+    render json: beacons
   end
 
   def show
-    # respond_with Product.find(params[:id])   
+    respond_with Beacon.find(params[:id])   
   end
 
   def create

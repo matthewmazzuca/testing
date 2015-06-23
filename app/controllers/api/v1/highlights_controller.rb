@@ -3,12 +3,12 @@ class Api::V1::HighlightsController < ApplicationController
   respond_to :json
 
   def index
-    highlights = highlight.search(params).page(params[:page]).per(params[:per_page])
-    render json: highlights, meta: pagination(highlights, params[:per_page])
+    highlights = Highlight.all
+    render json: highlights
   end
 
   def show
-    respond_with option.find(params[:id])   
+    respond_with Highlight.find(params[:id])   
   end
 
   def create

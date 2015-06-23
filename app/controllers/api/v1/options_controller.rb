@@ -3,12 +3,12 @@ class Api::V1::OptionsController < ApplicationController
   respond_to :json
 
   def index
-    Options = Option.search(params).page(params[:page]).per(params[:per_page])
-    render json: Options, meta: pagination(Options, params[:per_page])
+    options = Option.all
+    render json: options
   end
 
   def show
-    # respond_with Product.find(params[:id])   
+    respond_with Option.find(params[:id])   
   end
 
   def create

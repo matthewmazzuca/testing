@@ -12,7 +12,7 @@ class Api::V1::PropertiesController < ApplicationController
   end
 
   def create
-    property = current_user.properties.build(product_params) 
+    property = Property.new(product_params)  
     if property.save
       render json: property, status: 201, location: [:api, property] 
     else
@@ -38,7 +38,7 @@ class Api::V1::PropertiesController < ApplicationController
   private
 
     def product_params
-      params.require(:property).permit(:name, :address, :description, :lat, :lng, :created_at, :updated_at) 
+      params.require(:property).permit(:name, :price, :location, :image_url, :field, :user, :fields, :address, :description, :lat, :lng, :created_at, :updated_at  => []) 
     end
 
 end

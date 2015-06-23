@@ -19,6 +19,7 @@ class Property < ActiveRecord::Base
   validates :user_id, presence: true
   has_many :beacons
   has_many :highlights
+  has_many :fields
 
   # scope :close_to, -> (lat, lng, distance_in_meters = 2000) {
   #   where(%{

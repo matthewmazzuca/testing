@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   # # Enter the normal Devise authentication path,
   # # using the token authenticated user if available
-  before_filter :authenticate_user!, :except => [:index]
+  # before_filter :authenticate_user!, :except => [:index]
 
 
   # Prevent CSRF attacks by raising an exception.

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622171208) do
+ActiveRecord::Schema.define(version: 20150623195321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20150622171208) do
   end
 
   add_index "beacons", ["property_id"], name: "index_beacons_on_property_id", using: :btree
+
+  create_table "fields", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "highlights", force: :cascade do |t|
     t.string   "name"
@@ -54,6 +61,9 @@ ActiveRecord::Schema.define(version: 20150622171208) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "price"
+    t.string   "image_url"
+    t.string   "location"
   end
 
   add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree

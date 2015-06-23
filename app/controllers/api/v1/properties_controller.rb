@@ -1,6 +1,8 @@
 class Api::V1::PropertiesController < ApplicationController
   # before_action :authenticate_with_token!, only: [:create, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => :create
   respond_to :json
+
 
   def index
     properties = Property.all
@@ -12,7 +14,7 @@ class Api::V1::PropertiesController < ApplicationController
   end
 
   def create
-    property = Property.new(product_params)  
+    property = current_user.property.build(product_params)  
     if property.save
       render json: property, status: 201, location: [:api, property] 
     else
@@ -37,9 +39,9 @@ class Api::V1::PropertiesController < ApplicationController
 
   private
 
-    def product_params
-      params.require(:property).permit(:name, :price, :location, :image_url, :field, :user, :fields, :address, :description, :lat, :lng, :created_at, :updated_at  => []) 
-    end
+  def product_params
+    params.require(:property).permit(:name, :price, :location, :image_url, :user_id, :address, :description, :lat, :lng, :created_at, :updated_at, fields: [:id, :name, :value]) 
+  end
 
 end
 

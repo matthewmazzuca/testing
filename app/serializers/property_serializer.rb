@@ -5,7 +5,7 @@ class PropertySerializer < ActiveModel::Serializer
   has_one :user
   has_many :beacons
   has_many :highlights
-  hasy_many :fields
+  has_many :fields
 
   def cache_key
     [object, scope]

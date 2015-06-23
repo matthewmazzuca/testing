@@ -4,3 +4,6 @@ FactoryGirl.define do
   end
 
 end
+
+# FactoryGirl.create :beacon
+

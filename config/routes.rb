@@ -2,16 +2,19 @@ require 'api_constraints'
 
 OpenhouseApi::Application.routes.draw do
   # nobody puts baby in a namespace
-  devise_for :users,
+  devise_for :users, 
     path: '/api/v1/users',
-    controllers: { sessions: 'api/v1/sessions' }
+    controllers: { sessions: 'api/v1/sessions', :registrations => "users/registrations" } do
+      get "api/v1/users/sign_up" => "users/registrations#new", :as => :user_signup
+      get "api/v1/users/sign_in" => "api/v1/sessions", :as => :user_signin
+  end
 
   # Api definition
   namespace :api, defaults: { format: :json } do
     # namespace :v1, constraints: ApiConstraints.new(version: 1, default: true) do
     namespace :v1 do
       # We are going to list our resources here
-      
+      resource :users
       # resources :properties, :only => [:create, :update, :destroy]
       #   resources :beacons, :only => [:index, :show, :create]
 

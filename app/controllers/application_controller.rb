@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :authenticate_user_from_token!
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   # # before_action :authenticate_admin!
   # # before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -24,13 +24,5 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
-  protected
-
-    def pagination(paginated_array, per_page)
-      { pagination: { per_page: per_page.to_i,
-                      total_pages: paginated_array.total_pages,
-                      total_objects: paginated_array.total_count } }
-    end
 
 end

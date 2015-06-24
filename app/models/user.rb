@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_save :ensure_authentication_token
   validates :authentication_token, uniqueness: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -6,7 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   before_create :generate_authentication_token
-  before_save :ensure_authentication_token
+  
 
   has_many :properties, dependent: :destroy
 

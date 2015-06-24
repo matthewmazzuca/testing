@@ -2,9 +2,6 @@ require 'api_constraints'
 
 OpenhouseApi::Application.routes.draw do
   # nobody puts baby in a namespace
-  devise_scope :user do
-    post "api/v1/register" => "api/v1/registration#register"
-  end
 
   devise_for :users, 
     path: '/api/v1/users',

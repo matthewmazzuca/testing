@@ -15,7 +15,7 @@ OpenhouseApi::Application.routes.draw do
     # namespace :v1, constraints: ApiConstraints.new(version: 1, default: true) do
     namespace :v1 do
       # We are going to list our resources here
-      resource :users
+      # resource :users
       # resources :properties, :only => [:create, :update, :destroy]
       #   resources :beacons, :only => [:index, :show, :create]
 

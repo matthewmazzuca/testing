@@ -61,6 +61,9 @@ Devise.setup do |config|
   # :database      = Support basic authentication with authentication key + password
   # config.http_authenticatable = false
 
+  config.http_authenticatable = true
+  config.skip_session_storage = [:http_auth, :token_auth]
+
   # If http headers should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
 

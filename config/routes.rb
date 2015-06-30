@@ -2,6 +2,7 @@ require 'api_constraints'
 
 OpenhouseApi::Application.routes.draw do
   # nobody puts baby in a namespace
+  root 'public#index'
 
   devise_for :users, path: 'api/v1/users', controllers: { sessions: 'api/v1/sessions', registrations: "api/v1/registrations" }
 

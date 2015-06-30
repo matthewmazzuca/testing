@@ -1,5 +1,5 @@
 class Api::V1::SessionsController < Devise::SessionsController
-  skip_before_filter :authenticate_user_from_token!, :authenticate_user!
+  skip_before_action :authenticate_user_from_token!, only: [:create]
   # prepend_before_filter :require_no_authentication, only: [:new, :create]
   # prepend_before_filter :allow_params_authentication!, only: :create
   # prepend_before_filter :verify_signed_out_user, only: :destroy
@@ -7,19 +7,21 @@ class Api::V1::SessionsController < Devise::SessionsController
   respond_to :json
 
   def create
+    puts request.env
     super do |user|
       if request.format.json?
         data = {
           token: user.authentication_token,
           email: user.email
         }
+        puts data
         render json: data, status: 201 and return
       end
     end
   end
 
   def destroy
-    user = User.find_by(auth_token: params[:id])
+    user = User.find_by(authentication_token: params[:id])
     user.generate_authentication_token
     user.save
     head 204

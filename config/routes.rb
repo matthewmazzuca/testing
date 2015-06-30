@@ -3,7 +3,7 @@ require 'api_constraints'
 OpenhouseApi::Application.routes.draw do
   # nobody puts baby in a namespace
 
-  devise_for :users, :skip => [:sessions, :passwords, :registrations]
+  devise_for :users, path: 'api/v1/users', controllers: { sessions: 'api/v1/sessions', registrations: "api/v1/registrations" }
 
   # Api definition
   namespace :api, defaults: { format: :json } do
@@ -13,7 +13,6 @@ OpenhouseApi::Application.routes.draw do
       # resource :users
       # resources :properties, :only => [:create, :update, :destroy]
       #   resources :beacons, :only => [:index, :show, :create]
-      devise_for :users, controllers: { sessions: 'api/v1/sessions', :registration => "api/v1/registrations" }
       resources :properties do
         resources :beacons
         resources :highlights do

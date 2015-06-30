@@ -1,6 +1,4 @@
 class Api::V1::PropertiesController < ApplicationController
-  # before_action :authenticate_with_token!, only: [:create, :update, :destroy]
-  skip_before_filter :verify_authenticity_token, :only => :create
   respond_to :json
 
 

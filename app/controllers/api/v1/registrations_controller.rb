@@ -1,15 +1,22 @@
 # class  User
 	class Api::V1::RegistrationsController < Devise::RegistrationsController
-		prepend_before_filter :require_no_authentication, only: [:new, :create, :cancel]
- 	 	prepend_before_filter :authenticate_scope!, only: [:edit, :update, :destroy]
 
 		skip_before_filter :verify_authenticity_token
-			respond_to :json
+		respond_to :json
+
+		# def create
+	 #    user = User.new(user_params) 
+	 #    if user.save
+	 #      render json: user, status: 201
+	 #    else
+	 #      render json: { errors: user.errors }, status: 422
+	 #    end
+	 #  end
 
 			
 		private
 
-		def sign_up_params
+		def user_params
 			params.require(:user).permit(:email, :password, :password_confirmation)
 		end
 

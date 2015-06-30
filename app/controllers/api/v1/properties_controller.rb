@@ -31,7 +31,6 @@ class Api::V1::PropertiesController < ApplicationController
     else
       render json: { errors: property.errors }, status: 422
     end
-    respond_with :api, :v1, property
   end
 
   def destroy

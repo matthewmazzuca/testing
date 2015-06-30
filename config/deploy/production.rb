@@ -73,7 +73,7 @@ server '45.55.74.11', user: 'root', roles: %w{web}
 # See the example commented out section in the file
 # for more options.
 set :ssh_options, {
-    forward_agent: false,
+    forward_agent: true,
     auth_methods: %w(password),
     password: 'glebopenhouse',
     user: 'root',

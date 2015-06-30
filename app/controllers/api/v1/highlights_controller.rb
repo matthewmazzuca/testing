@@ -1,7 +1,10 @@
 class Api::V1::HighlightsController < ApplicationController
-  before_action :authenticate_with_token!, only: [:create, :update, :destroy]
-  respond_to :json
+  skip_before_filter :authenticate_user_from_token!, :only => [:show, :index]
+  skip_before_filter :authenticate_user!, :only => [:show, :index]
+  skip_before_filter :verify_authenticity_token
 
+  respond_to :json
+  
   def index
     highlights = Highlight.all
     render json: highlights
@@ -14,7 +17,7 @@ class Api::V1::HighlightsController < ApplicationController
   def create
     highlight = current_user.properties.highlights.build(option_params) 
     if highlight.save
-      render json: highlight, status: 201, location: [:api, highlight] 
+      render json: highlight, status: 201, location: [:api, :v1, highlight] 
     else
       render json: { errors: highlight.errors }, status: 422
     end
@@ -23,7 +26,7 @@ class Api::V1::HighlightsController < ApplicationController
   def update
     highlight = current_user.properties.highlights.find(params[:id])
     if highlight.update(highlight_params)
-      render json: highlight, status: 200, location: [:api, highlight] 
+      render json: highlight, status: 200, location: [:api, :v1, highlight] 
     else
       render json: { errors: highlight.errors }, status: 422
     end

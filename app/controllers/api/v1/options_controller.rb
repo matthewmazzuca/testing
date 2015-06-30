@@ -1,5 +1,8 @@
 class Api::V1::OptionsController < ApplicationController
-  before_action :authenticate_with_token!, only: [:create, :update, :destroy]
+  skip_before_filter :authenticate_user_from_token!, :only => [:show, :index]
+  skip_before_filter :authenticate_user!, :only => [:show, :index]
+  skip_before_filter :verify_authenticity_token
+
   respond_to :json
 
   def index
@@ -14,7 +17,7 @@ class Api::V1::OptionsController < ApplicationController
   def create
     option = Option.new(option_params) 
     if option.save
-      render json: option, status: 201, location: [:api, option] 
+      render json: option, status: 201, location: [:api, :v1, option] 
     else
       render json: { errors: option.errors }, status: 422
     end
@@ -23,7 +26,7 @@ class Api::V1::OptionsController < ApplicationController
   def update
     option = current_user.properties.highlight.options.find(params[:id])
     if option.update(Option_params)
-      render json: Option, status: 200, location: [:api, Option] 
+      render json: Option, status: 200, location: [:api, :v1, option] 
     else
       render json: { errors: option.errors }, status: 422
     end

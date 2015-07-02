@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-OpenhouseApi::Application.load_tasks
+Openhouseapi::Application.load_tasks

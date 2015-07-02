@@ -26,6 +26,7 @@ gem 'simple_form'
 gem 'turbolinks'
 gem 'figaro'
 gem 'mailgun-ruby'
+gem 'rename'
 
 group :development do
   gem "better_errors"

@@ -1,6 +1,6 @@
 require 'api_constraints'
 
-OpenhouseApi::Application.routes.draw do
+Openhouseapi::Application.routes.draw do
   resources :contacts
   get 'home/index'
 

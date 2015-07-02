@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-OpenhouseApi::Application.config.secret_key_base = '502f250e5e7e8581b8dd715e0fec8e0691ac4b56039ecb4906a0a83c614e6e8bedb4b08d984bade8028a469d2f3278437d72320f282141e10fa1ddafdddaf3fe'
+Openhouseapi::Application.config.secret_key_base = '502f250e5e7e8581b8dd715e0fec8e0691ac4b56039ecb4906a0a83c614e6e8bedb4b08d984bade8028a469d2f3278437d72320f282141e10fa1ddafdddaf3fe'

@@ -24,6 +24,8 @@ gem 'bcrypt'
 gem 'mail_form'
 gem 'simple_form'
 gem 'turbolinks'
+gem 'figaro'
+gem 'mailgun-ruby'
 
 group :development do
   gem "better_errors"

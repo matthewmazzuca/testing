@@ -1,6 +1,7 @@
 require 'api_constraints'
 
 OpenhouseApi::Application.routes.draw do
+  resources :contacts
   get 'home/index'
 
   # nobody puts baby in a namespace

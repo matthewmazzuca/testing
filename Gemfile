@@ -21,6 +21,9 @@ gem 'aws-sdk'
 gem 'active_model_serializers'
 
 gem 'bcrypt'
+gem 'mail_form'
+gem 'simple_form'
+gem 'turbolinks'
 
 group :development do
   gem "better_errors"
